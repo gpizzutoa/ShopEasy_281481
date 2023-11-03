@@ -1,10 +1,10 @@
-# Project Title
+# ShopEasy AI Model
 
 ## Team Members
-- Member 1
+- Gianfranco Pizzuto 281481
 - Member 2
 - Member 3
-- ...
+
 
 ## Section 1: Introduction
 Briefly describe your project here.
