@@ -1,54 +1,55 @@
-# ShopEasy_281481
-AI & mp; ML Luiss class project
-1. A “README.md” file with the following information:
-• Title and Team members
+# Project Title
 
-• [Section 1] Introduction – Briefly describe your project
+## Team Members
+- Member 1
+- Member 2
+- Member 3
+- ...
 
-• [Section 2] Methods – Describe your proposed ideas (e.g., features, algorithm(s), training overview, design choices, etc.) and your environment so that:
+## Section 1: Introduction
+Briefly describe your project here.
 
-• A reader can understand why you made your design decisions and the 
-reasons behind any other choice related to the project
+## Section 2: Methods
+Describe your proposed ideas, such as features, algorithms, training overview, design choices, etc., and your environment here. Ensure that:
+- A reader can understand why you made your design decisions.
+- A reader should be able to recreate your environment (include commands like `conda list`, `conda env export`, etc.).
+- Consider including a figure illustrating your ideas, like a flowchart of your machine learning system. (Place it in the "images" folder and link it here using `![Flowchart Description](images/flowchart.png)`).
 
-• A reader should be able to recreate your environment (e.g., conda list, 
-conda envexport, etc.)
+## Section 3: Experimental Design
+Describe the experiments conducted to validate the target contributions of your project:
 
-• It may help to include a figure illustrating your ideas, e.g., a flowchart illustrating the steps in your machine learning system(s)
+### Purpose
+1-2 sentence high-level explanation of each experiment.
 
-• [Section 3] Experimental Design – Describe any experiments you conducted to demonstrate/validate the target contribution(s) of your project; indicate the following for each experiment:
+### Baselines
+Describe the methods used for comparison.
 
-• The main purpose: 1-2 sentence high-level explanation
+### Evaluation Metrics
+List which metrics were used and why.
 
-• Baseline(s): describe the method(s) that you used to compare your work to
+## Section 4: Results
+Describe your main findings and conclusions drawn from the work:
 
-• Evaluation Metrics(s): which ones did you use and why?
+- Main findings: report final results here.
+- Include placeholder figures and tables to communicate findings (use Markdown image and table syntax).
 
+Ensure that all figures containing results are generated from the code.
 
-• [Section 4] Results – Describe the following:
+## Section 5: Conclusions
+Concluding remarks:
 
-• Main finding(s): report your final results and what you might conclude 
-from your work
+- Summarize the key take-away from your work in one paragraph.
+- Discuss any questions not fully answered by your work and potential future directions.
 
-• Include at least one placeholder figure and/or table for communicating your findings
+# main.ipynb
 
-• All the figures containing results should be generated from the code.
+Ensure that your `main.ipynb` notebook includes:
 
+- Alternating text and code cells from start to finish.
+- Descriptions above each code cell explaining the intent and choice of the code below.
+- Explanations of the outputs of each cell, especially figures, such that a reader understands what they are about to see.
 
-• [Section 5] Conclusions – List some concluding remarks. In particular:
+# Additional Resources
 
-• Summarize in one paragraph the take-away point from your work.
-
-• Include one paragraph to explain what questions may not be fully answered by your work as well as natural next steps for this direction of future work
-
-
-2. single notebook called “main.ipynb” with ALL the code used for the project. The notebook 
-must have the following characteristics:
-• Text and code cells must alternate from start to finish. The text cell above must describe the contents of the code below and its output so that a reader can easily follow up on your implementation. In particular:
-
-• You must explain what you will do and why you chose to do so.
-
-• You must explain the outputs of the cell (if any) with particular attention to describing figures such that a
-reader already knows what he is going to see
-
-
-3. An additional folder named “images” contains the figures displayed in the “README.md”.
+## Images Folder
+All figures displayed in the `README.md` should be stored in the `images` folder.
