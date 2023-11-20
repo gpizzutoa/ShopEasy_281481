@@ -2,7 +2,7 @@
 
 ## Team Members
 - Gianfranco Pizzuto 281481
-- Member 2
+- Santiago Cuesta 289581
 - Member 3
 
 
