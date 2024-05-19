@@ -310,14 +310,14 @@ Once we have determined the optimal number of clusters, we run the K-means++ mod
 - 
 ##### Scatter Plot
 Here we analyze the resulting clusters and visualize them using PCA for a 2D plot.
-<img src="images/MeansViz.png" alt="Box Plots" width="6000"/>
+<img src="images/K_MeansViz.png" alt="Box Plots" width="6000"/>
 
   - **Cluster 0**: Densely packed and well-separated from the other clusters, aligning with their conservative spending behavior.
   - **Cluster 1**: Spreads out more along the second principal component, reflecting varied spending on multiple items.
   - **Cluster 2**: Scatters widely along both components, indicating diverse and frequent purchasing behaviors, with high spending on both single and multiple items.
 
 ##### Pie Graph
-<img src="images/Meanspie_chart.png" alt="Box Plots" width="6000"/>
+<img src="images/K_Meanspie_chart.png" alt="Box Plots" width="6000"/>
   
   - **Cluster 0**: Makes up 65.9% of the total data points, indicating a large majority of conservative, infrequent purchasers with high emergency funds.
   - **Cluster 1**: Represents 17.8% of the data, characterized by moderate spending and frequent purchases, especially multiple items.
