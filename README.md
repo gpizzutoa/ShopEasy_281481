@@ -136,40 +136,21 @@ We observed that numerous users have values for `leastAmountPaid` that are highe
 
 We now analyzed the `location` and `accountType` to determine if there is a predominant category. Both categories appeared to have an equal distribution.
 
-#### KDE (Kernel Density Estimate)
+#### d) KDE (Kernel Density Estimate)
 
-<img src="images/KDE.png" alt="Box Plots" width="6000"/>
-
-**Analysis of Relationship Between itemBuyFrequency and multipleItemBuyFrequency**
-
-We observed a strong positive relationship between these two variables:
-- **itemBuyFrequency**: Frequency of items purchased by the user.
-- **multipleItemBuyFrequency**: Frequency of items bought in multiple installments by the user.
-
-To quantify this relationship, we calculated their correlation.
-
-- **Correlation Result**: The correlation is very strong (0.86).
-  - **Interpretation**: This high correlation suggests that users frequently opt for multiple installments, resulting in a close alignment between the overall buying frequency and the frequency of installment purchases.
-  - **Alternative Explanation**: Purchases made in installments tend to be frequent, thereby contributing to the strong correlation.
-
-**Key Points:**
-- The scatter plot visually confirms the strong positive relationship.
-- The correlation coefficient quantifies this relationship, indicating a value of 0.86.
-- Users often choose multiple installments, or frequent installment purchases align closely with the overall buying frequency, leading to this high correlation.
+<img src="images/KDE.png" alt="Box Plots" width="600"/>
 
 The KDE plots indicated that the distribution of itemBuyFrequency is similar across different account types and locations. This suggests that neither accountType nor location significantly affects the distribution of other features.
 
-*(Insert KDE plots here for itemBuyFrequency across accountType and location)*
-
 Based on this observation, we determined that the location feature might not be relevant for understanding customer buying habits and behavior. In an e-commerce context, where most transactions occur online, the customer's physical location is less significant.
 
-#### PairPlot with accountType
+#### e) PairPlot with accountType
 
 We used a pair plot to investigate the potential correlation between accountType and other key features that might influence customer buying habits and behavior. 
 
-Using the pair plot, we could not visualize a clear correlation between `accountType` and any other variable.
+<img src="images/PairPlot.png" alt="Box Plots" width="600"/>
 
-*(Insert pair plot here showing the relationship between accountType and other features)*
+Using the pair plot, we could not visualize a clear correlation between `accountType` and any other variable.
 
 ### Label Encoding
 
