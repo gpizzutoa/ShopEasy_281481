@@ -2,9 +2,8 @@
 
 ## Team Members
 - Gianfranco Pizzuto 281481
-- Santiago Cuesta 289581
 - Petar Jelusic 286581
-
+- Santiago Cuesta 289581
 
 ## Section 1: Introduction
 In this project, we analyze data from ShopEasy, a leading e-commerce platform offering a wide range of products. The goal is to uncover hidden patterns in customer behavior to enhance personalized user experiences, special promotions, and services. By performing exploratory data analysis (EDA) and preprocessing the dataset, we aim to segment customers based on their buying habits and behaviors.
