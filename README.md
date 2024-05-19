@@ -16,9 +16,9 @@ Describe your proposed ideas, such as features, algorithms, training overview, d
 - Consider including a figure illustrating your ideas, like a flowchart of your machine learning system. (Place it in the "images" folder and link it here using `![Flowchart Description](images/flowchart.png)`).
 
 
-### **Visualizing and Understanding Data Structure & Values**
+### ** 1. Visualizing and Understanding Data Structure & Values**
 
-#### 1. Checking Data Integrity
+#### a) Checking Data Integrity
 
 First, we examined the dataset for missing values to ensure its completeness, checking for missing values and duplicates.
 
@@ -28,7 +28,7 @@ First, we examined the dataset for missing values to ensure its completeness, ch
   - `leastAmountPaid`: 313 missing values (3.50% of the total). This higher percentage might still not significantly impact our analysis of payment behavior.
   - **Overall Data Completeness**: Most columns have a very low percentage of missing values or none at all, because of the low percentage we will drop those columns. We also observed there where no duplicates.
 
-#### 2. Dropping Unnecessary Values & Columns
+#### b) Dropping Unnecessary Values & Columns
 
   - We removed the `personId` column since it's a primary key and not relevant for our analysis.
   -  We dropped rows that had any missing values across the DataFrame (after removing `personId`).
@@ -36,16 +36,17 @@ First, we examined the dataset for missing values to ensure its completeness, ch
 - This resulted in a new, clean DataFrame which we referred to as `ndf`.
 - After cleaning, we re-checked for missing values to confirm that no missing data remained. All was good!
 
-#### 3. Describing the New DataFrame
+#### c) Describing the New DataFrame
 
 We then summarized the new DataFrame to understand the distribution and range of values in each column.
 
 *Observations:* `leastAmountPaid` has a maximum value greater than the `accountTotal` suggesting potential errors or outliers.
 
-### **Univariate Analysis**
+--- 
 
-#### 4. Distribution Graph
+### ** 2. Univariate Analysis**
 
+#### a) Distribution Graph
 We began by examining the distribution of individual variables within the DataFrame to understand their spread and identify any potential skewness or outliers.
 
 <img src="images/histograms.png" alt="Distribution Graph" width="600"/>
@@ -58,9 +59,11 @@ We began by examining the distribution of individual variables within the DataFr
 - **Uniform Distribution**: `webUsage`
 
 
-#### Box Plots
+#### b) Box Plots
 
 To identify and analyze outliers, we utilized box plots for various features.
+
+<img src="images/boxplots.png" alt="Box Plots" width="600"/>
 
 **Observations from Box Plots:**
 
@@ -70,8 +73,6 @@ To identify and analyze outliers, we utilized box plots for various features.
 
 - **Next Steps**:
   - Before delving deeper into outlier analysis, we will first select the most appropriate features for clustering.
-
-*(Insert box plots for key features to illustrate the presence of outliers and variation)*
 
 ---
 
