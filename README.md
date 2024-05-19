@@ -3,7 +3,7 @@
 ## Team Members
 - Gianfranco Pizzuto 281481
 - Santiago Cuesta 289581
-- Petar Jelusic 
+- Petar Jelusic 286581
 
 
 ## Section 1: Introduction
@@ -48,7 +48,8 @@ We then summarized the new DataFrame to understand the distribution and range of
 
 We began by examining the distribution of individual variables within the DataFrame to understand their spread and identify any potential skewness or outliers.
 
-*![Distribution Graph](images/histograms.png)
+<img src="images/histograms.png" alt="Distribution Graph" width="600"/>
+
 
 **Observations from the Data:**
 - **Right-Skewed Distributions**: `accountTotal`, `itemCosts`, `maxSpendLimit`
