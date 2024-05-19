@@ -9,11 +9,21 @@
 ## Section 1: Introduction
 Briefly describe your project here.
 
+**Setup Instructions**
+To recreate the environment used for this project, follow these steps:
+1. **Clone the Repository:**
+   ```sh
+   git clone https://github.com/gpizzutoa/ShopEasy_281481.git
+   cd your-repo-directory
+   ```
+2. **Create and Activate Conda Environment:**
+   Using `requirements.txt`:
+   ```sh
+   conda create --name myenv --file requirements.txt
+   conda activate myenv
+   ```
+
 ## Section 2: Methods (**EDA & Data Pre-Processing**)
-Describe your proposed ideas, such as features, algorithms, training overview, design choices, etc., and your environment here. Ensure that:
-- A reader can understand why you made your design decisions.
-- A reader should be able to recreate your environment (include commands like `conda list`, `conda env export`, etc.).
-- Consider including a figure illustrating your ideas, like a flowchart of your machine learning system. (Place it in the "images" folder and link it here using `![Flowchart Description](images/flowchart.png)`).
 
 
 ### **1. Visualizing and Understanding Data Structure & Values**
@@ -148,18 +158,14 @@ Based on this observation, we determined that the location feature might not be 
 
 We used a pair plot to investigate the potential correlation between accountType and other key features that might influence customer buying habits and behavior. 
 
-<img src="images/PairPlot.png" alt="Box Plots" width="600"/>
+<img src="images/PairPlot.png" alt="Box Plots" width="6000"/>
 
 Using the pair plot, we could not visualize a clear correlation between `accountType` and any other variable.
 
-### Label Encoding
+### 4. Label Encoding
 
-**Encoding for accountType**
+We applied label encoding to `accountType` because it can be considered ordinal, where the order of categories is meaningful.
 
-- **Rationale**:
-  - We applied label encoding to `accountType` because it can be considered ordinal, where the order of categories is meaningful.
-
-- **Ordering**:
   - **Premium** `0`: Pays the most.
   - **Regular** `1`: Pays a standard amount.
   - **Student** `2`: Pays the least due to discounts.
@@ -167,186 +173,49 @@ Using the pair plot, we could not visualize a clear correlation between `account
 This encoding reflects the hierarchy of payment amounts among different account types.
 
 **Encoding for location**
+ Since location values are nominal, meaning they have no inherent order. We used dummy variables, where each category is represented by a binary vector.
 
-- **Data Type**:
-  - Location values are nominal, meaning they have no inherent order.
-
-- **Encoding Choice**:
-  - We avoided label encoding to prevent implying any natural order.
-  - Instead, we used dummy variables, where each category is represented by a binary vector.
-
-This approach ensures that the encoding accurately reflects the nature of the location data.
-
-*(Insert table or example of encoded variables here)*
-
----
-Sure, here is a detailed markdown description for the correlation heatmap section with clear explanations and suggestions for including graphs:
-
----
-
-### **Correlation Heatmap**
+### **5. Correlation Heatmap**
 
 Using this heatmap, we'll visualize the correlation between all attributes to observe any correlations that we might have missed.
 
-#### Correlation Heatmap Analysis
-
-- **Location**:
-  - No correlation with other attributes.
-  - Location is not relevant for our analysis as it doesn't affect customer behavior on the e-commerce website.
-  - *Drop location feature.*
-
-- **Account Type**:
-  - Relevant to our analysis despite no correlation with other features in the heatmap.
-  - *Keep accountType feature.*
+<img src="images/HeatMapFull.png" alt="Box Plots" width="6000"/>
 
 - **Irrelevant or Redundant Features (To Be Dropped)**:
-  - **accountTotal**:
-    - Inconsistent values compared to `itemCosts` and `monthlyPaid`.
-    - Possibly represents non-monetary value, different currency, or inaccurate data.
-  - **leastAmountPaid**:
-    - No correlation with other features.
-    - Inconsistent values compared to `monthlyPaid`.
-  - **monthlyPaid**:
-    - Inconsistencies with `itemCosts`.
-    - No additional insights over `itemCosts`.
-  - **webUsage** and **frequencyIndex**:
-    - Little to no correlation with other features.
-    - Similar definitions to `itemBuyFrequency`, which is relevant.
-  - **paymentCompletionRate**:
-    - Lack of correlation with other features.
-    - Provides no significant insights.
-  - **maxSpendLimit**:
-    - Inconsistencies with `singleItemCosts`.
-    - Definition conflicts with actual values.
-  - **singleItemBuyFrequency** and **multipleItemBuyFrequency**:
-    - More specific versions of `itemBuyFrequency`.
-    - Can be generalized by `itemBuyFrequency`.
-  - **singleItemCosts** and **multipleItemCosts**:
-    - More specific versions of `itemCosts`.
-    - Can be generalized by `itemCosts`.
-  - **emergencyUseFrequency**:
-    - High correlation with `emergencyCount`.
-    - Redundant feature.
+  - **Location**: No correlation with other attributes.
+  - **accountTotal**: Inconsistent values compared to `itemCosts` and `monthlyPaid`.
+  - **leastAmountPaid**: No correlation with other features; inconsistent with `monthlyPaid`.
+  - **monthlyPaid**: Inconsistencies with `itemCosts`; no additional insights.
+  - **webUsage** and **frequencyIndex**: Little correlation; similar to `itemBuyFrequency`.
+  - **paymentCompletionRate**: Lack of correlation; no significant insights.
+  - **maxSpendLimit**: Inconsistent with `singleItemCosts`; conflicting definition.
+  - **singleItemBuyFrequency** and **multipleItemBuyFrequency**: Specific versions of `itemBuyFrequency`.
+  - **singleItemCosts** and **multipleItemCosts**: Specific versions of `itemCosts`.
+  - **emergencyUseFrequency**: High correlation with `emergencyCount`; redundant.
 
-*(Insert correlation heatmap here to visualize the correlations among all features)*
+- **Account Type**:
+  - Relevant despite no correlation with other features
 
-### **Dropping Values**
+### **6. Dropping Values**
 
 We created a new variable, Final Data Frame (`fdf`), in which we dropped all the columns listed above.
 
-### **Removing Outliers**
+### **7. Removing Outliers**
 
 To address outliers, we removed values that are more than 4 standard deviations from the mean. Below, we identify and remove these outliers, ensuring we don't lose too much data.
 - **Outliers Removed**: The number of rows removed is 536, which is relatively small and can be considered negligible. Therefore, we proceed with the removal process.
 
-*(Insert histogram or box plot here showing the distribution before and after outlier removal)*
-
-### **Data Scaling**
+### **8. Data Scaling**
 
 Since the attribute values have significantly different ranges, we scaled the data as a general practice to normalize the data.
 
-*(Insert a table or summary showing the range of values before and after scaling)*
-
-### **Correlation Heatmap for Cleaned & Scaled Data Frame**
+### **9. Correlation Heatmap for Cleaned & Scaled Data Frame**
 
 After cleaning and scaling the data, we generated a new correlation heatmap to ensure the data is now ready for further analysis.
 
-*(Insert correlation heatmap for the cleaned and scaled data frame here)*
+<img src="images/HeatMapScaled.png" alt="Box Plots" width="6000"/>
 
 ---
-
-
-## Section 3: Experimental Design
-Describe the experiments conducted to validate the target contributions of your project:
-
-### Purpose
-1-2 sentence high-level explanation of each experiment.
-
-### Baselines
-Describe the methods used for comparison.
-
-### Evaluation Metrics
-List which metrics were used and why.
-
-## Section 4: Results
-Describe your main findings and conclusions drawn from the work:
-
-- Main findings: report final results here.
-- Include placeholder figures and tables to communicate findings (use Markdown image and table syntax).
-
-Ensure that all figures containing results are generated from the code.
-
-## Section 5: Conclusions
-Concluding remarks:
-
-- Summarize the key take-away from your work in one paragraph.
-- Discuss any questions not fully answered by your work and potential future directions.
-
-# main.ipynb
-
-Ensure that your `main.ipynb` notebook includes:
-
-- Alternating text and code cells from start to finish.
-- Descriptions above each code cell explaining the intent and choice of the code below.
-- Explanations of the outputs of each cell, especially figures, such that a reader understands what they are about to see.
-
-# Additional Resources
-
-## Images Folder
-All figures displayed in the `README.md` should be stored in the `images` folder.
-
-
-# Project Description: ShopEasy
-Imagine a platform named ShopEasy, a leading e-commerce site that sells a variety of products, from 
-books and gadgets to furniture and fashion. Over the years, they have amassed a vast amount of user 
-data. This data is a gold mine of insights waiting to be discovered. ShopEasy aims to provide 
-personalized user experiences, special promotions, and improved services. But to do this effectively, 
-they first need to understand the buying habits and behaviors of their customers. By applying 
-segmentation to this dataset, ShopEasy aims to uncover these hidden patterns and provide an 
-enhanced, personalized shopping experience for its users.
-
-## Dataset Features
-- **personId:** Unique identifier for each user on the platform
-- **accountTotal:** Total amount spent by the user on ShopEasy since their registration
-- **frequencyIndex:** Reflects how frequently the user shops, with 1 being very frequent and values less than 1 being less frequent
-- **itemCosts:** Total costs of items purchased by the user
-- **singleItemCosts:** Costs of items that the user bought in a single purchase without opting for installments
-- **multipleItemCosts:** Costs of items that the user decided to buy in installments
-- **emergencyFunds:** Amount that the user decided to keep as a backup in their ShopEasy wallet for faster checkout or emergency purchases
-- **itemBuyFrequency:** Frequency with which the user makes purchases
-- **singleItemBuyFrequency:** How often the user makes single purchases without opting for installments
-- **multipleItemBuyFrequency:** How often the user opts for installment-based purchases
-- **emergencyUseFrequency:** How frequently the user taps into their emergency funds
-- **emergencyCount:** Number of times the user has used their emergency funds
-- **itemCount:** Total number of individual items purchased by the user
-- **maxSpendLimit:** The maximum amount the user can spend in a single purchase, set by ShopEasy based on user's buying behavior and loyalty
-- **monthlyPaid:** Total amount paid by the user every month
-- **leastAmountPaid:** The least amount paid by the user in a single transaction
-- **paymentCompletionRate:** Percentage of purchases where the user has paid the full amount
-- **accountLifespan:** Duration for which the user has been registered on ShopEasy
-- **location:** User's city or region
-- **accountType:** The type of account held by the user. Regular for most users, Premium for those who have subscribed to ShopEasy premium services, and Student for users who have registered with a student ID
-- **webUsage:** A metric (0-100) indicating the frequency with which the user shops on ShopEasy via web browsers. A higher number indicates more frequent web usage
-
-## Assignment
-- **Perform an Explanatory data analysis (EDA)** with visualization using the entire dataset.
-- **Preprocess the dataset** (remove duplicates, encode categorical features with one hot encoding, not necessarily in this order).
-- **Define the problem type** (regression, classification, or clustering), explain your choice, and design your model accordingly. Test at least 2 different models.
-- **Identify the proper number of segments**, and evaluate different options.
-- **Describe the properties of the segments** you have identified.
-- **Describe the properties of the customers** belonging to each segment.
-
-
-
-
-
-Certainly! Here is the markdown description for your machine learning models section, organized and formatted for clarity:
-
----
-
-## **ML MODELS**
-
-### Description
 
 **Why This is a Clustering Problem**
 
@@ -364,146 +233,242 @@ Certainly! Here is the markdown description for your machine learning models sec
 
 The objective is to identify natural groupings within the data to enhance the user experience through personalized recommendations.
 
-### **K-Means++**
+## Section 3: Experimental Design ( **K-Means++**)
+### Purpose (Why is K-means++ Good for This Problem?)
+- **Better Initialization:** Ensures initial centroids are spread out, reducing poor initialization that could lead to suboptimal results.
+- **Faster Convergence:** With better initial centroids, K-means++ often converges faster than standard K-means, reducing the number of iterations required.
+- **Improved Clustering Quality:** Increases the likelihood of finding clusters that better represent the inherent structure of the data.
 
-#### Description
+For our analysis on customer purchasing behavior, K-means++ is beneficial because it helps identify distinct customer segments more accurately, reduces variability in clustering results, and enhances the performance and efficiency of the clustering process, making it suitable for large datasets.
 
-**What is K-means++?**
+### Baselines
+We compared the K-means++ clustering results with the standard K-means clustering algorithm. The comparison focused on initialization quality, convergence speed, and clustering accuracy.
 
-K-means++ is an enhanced initialization method for the K-means clustering algorithm. Instead of randomly selecting initial centroids like the standard K-means algorithm, K-means++ carefully selects initial centroids to be more spread out. Here’s how we will do it:
-
-1. **First Centroid:** Select the first centroid randomly from the data points.
-2. **Subsequent Centroids:** For each subsequent centroid, select a data point from the remaining data points with a probability proportional to its squared distance from the nearest existing centroid.
-3. **Repeat:** Continue this process until we have chosen \( k \) centroids.
-
-**Why is K-means++ Good for This Problem?**
-
-- **Better Initialization:** K-means++ ensures that initial centroids are spread out, reducing the chances of poor initialization that could lead to suboptimal clustering results.
-- **Faster Convergence:** With better initial centroids, K-means++ will often converge faster than standard K-means, reducing the number of iterations required.
-- **Improved Clustering Quality:** By starting with well-separated centroids, K-means++ increases the likelihood of finding clusters that better represent the inherent structure of the data.
-
-For our clustering analysis on customer purchasing behavior, K-means++ will be particularly beneficial because:
-- It helps identify distinct customer segments more accurately.
-- It reduces the variability in clustering results, leading to more consistent and reliable insights.
-- It enhances the performance and efficiency of the clustering process, making it suitable for large datasets.
-
-Overall, K-means++ is a robust choice for our clustering tasks, providing a solid foundation for segmenting customers effectively and deriving meaningful business insights.
-
-#### Choosing the Optimal Number of Clusters
-
-##### **Elbow Method**
-
+### Evaluation Metrics
+##### a) **Elbow Method**
 **Purpose**: To determine the ideal number of clusters for K-means clustering.
-
-**Inertia**: Measures how close values in a cluster are to their centroid (within-cluster sum of squares). Inertia decreases as the number of clusters increases.
+**Inertia**: Measures the within-cluster sum of squares. Inertia decreases as the number of clusters increases.
 
 **Procedure**:
 - Run K-means with different numbers of clusters (k).
 - Plot inertia (y-axis) against the number of clusters (x-axis).
-- The "elbow point," where inertia starts to decrease more slowly, indicates the optimal number of clusters. Beyond this point, adding more clusters offers diminishing returns.
+- Identify the "elbow point" where inertia starts to decrease more slowly, indicating the optimal number of clusters. 
 
-*(Insert Elbow Method graph here showing inertia vs. number of clusters)*
+<img src="images/Elbow_Clusters.png" alt="Box Plots" width="450"/>
 
-This method suggests a cluster number of 3 or 4 given the graph.
+This method suggests a cluster number of 3 or 4 based on the graph.
 
-##### **Silhouette Score**
-
-- **Usage**: We will also use the Silhouette score to determine the appropriate number of clusters, taking into account the graph.
+##### b) **Silhouette Score**
+- **Usage**: Determines the appropriate number of clusters, considering the graph.
 - **Function**: Measures how similar an object is to its own cluster compared to other clusters.
 - **Importance**: Helps in identifying distinct clusters and minimizing overlap.
+  
+*K-Means Silhouette Score (4 clusters): 0.23*
+*K-Means Silhouette Score (3 clusters): 0.27*
 
-Here we see that using 3 clusters is significantly better than 4. We also do not expect a large number of clusters because it is less relevant in a clustering problem such as this one.
+Using 3 clusters is significantly better than 4. We do not expect a large score because it is less relevant in a clustering problem such as this one.
 
 **Rationale**:
-- **Customer Segmentation**: The goal is to identify general customer types, making the elbow method a practical choice.
+- **Customer Segmentation**: Identifies general customer types, making the elbow method practical.
 - **Complex Data**: Using the Silhouette score alone might suggest more clusters than necessary, leading to overfitting and making clusters less interpretable.
 - **Insightful Analysis**: Both methods combined provide a balanced approach, ensuring meaningful and manageable clusters without focusing on subtle, non-essential differences in complex, high-dimensional data. Because of this, we will use `3` clusters.
 
-*(Insert Silhouette Score graph here showing the scores for different numbers of clusters)*
+## Section 4: Results (**K-Means++**)
 
 #### Running the Model & Visualization
 
 Once we have determined the optimal number of clusters, we run the K-means++ model and visualize the results.
+##### Mean Visualization
+<img src="images/kmeans_combined_summary.png" alt="Box Plots" width="6000"/>
 
+**Cluster 0:**
+- **Purchasing Behavior:** Members of this cluster tend to be conservative spenders. They buy items infrequently, which is reflected in their low single and multiple item buy frequencies. This conservative spending behavior is consistent in both scaled and cleaned data.
+- **Emergency Funds:** They maintain high emergency funds, indicating a preference for saving over spending. This group likely values financial security and may be risk-averse.
+- **Account Longevity:** Users in this cluster have been with the platform for a longer time, suggesting satisfaction with the service but potentially less engagement in recent purchases.
+- **Cost Per Purchase:** They spend relatively low amounts on both single and multiple item purchases, indicating a preference for budget-friendly options or necessities over luxury items.
+
+**Cluster 1:**
+- **Moderate Spending:** This cluster shows a balanced approach to spending. They have a moderate buy frequency for both single and multiple items, suggesting a regular but not excessive purchasing pattern.
+- **Multiple Item Preference:** They show a higher tendency to purchase multiple items at once compared to single items, indicating they might be deal-seekers or bulk buyers.
+- **Emergency Funds:** Their emergency funds are significantly lower than Cluster 0, which might suggest either a lower overall income or a higher willingness to spend disposable income rather than save it.
+- **Account Activity:** Their account lifespan is similar to Cluster 0, indicating long-term users, but their purchasing patterns are more varied and frequent, showing a higher level of engagement with the platform.
+
+**Cluster 2:**
+- **High Spending:** Members of this cluster are characterized by their high expenditure on both single and multiple items, indicating a preference for higher-value or premium products.
+- **Frequent Purchasers:** They have the highest buy frequency among all clusters, showing active and regular engagement with the platform.
+- **Lower Emergency Funds:** Despite their high spending, their emergency funds are not as high as might be expected, suggesting that they prioritize spending on products over saving, or they have a different approach to financial management.
+- **High Item Count:** This group buys a large number of items, possibly indicating bulk purchasing, reselling, or simply a high-consumption lifestyle.
+- **Account Type Consistency:** Their account types are similar to other clusters, indicating that the spending behavior is not influenced by account type but rather by personal preferences and financial capacity.
+- 
 ##### Scatter Plot
+Here we analyze the resulting clusters and visualize them using PCA for a 2D plot.
+<img src="images/MeansViz.png" alt="Box Plots" width="6000"/>
 
-*(Insert scatter plot here showing the clusters in a 2D space)*
+  - **Cluster 0**: Densely packed and well-separated from the other clusters, aligning with their conservative spending behavior.
+  - **Cluster 1**: Spreads out more along the second principal component, reflecting varied spending on multiple items.
+  - **Cluster 2**: Scatters widely along both components, indicating diverse and frequent purchasing behaviors, with high spending on both single and multiple items.
 
 ##### Pie Graph
+<img src="images/Meanspie_chart.png" alt="Box Plots" width="6000"/>
+  
+  - **Cluster 0**: Makes up 65.9% of the total data points, indicating a large majority of conservative, infrequent purchasers with high emergency funds.
+  - **Cluster 1**: Represents 17.8% of the data, characterized by moderate spending and frequent purchases, especially multiple items.
+  - **Cluster 2**: Accounts for 16.3% of the data, representing heavy spenders who purchase expensive items frequently.
 
-*(Insert pie chart here showing the proportion of each cluster)*
+##### **Implications**
+- **Cluster 0**: 
+  - **Marketing Strategies**: Target with promotions on essential items and financial products/services that emphasize savings.
+  - **Customer Service**: Provide value through loyalty programs that reward long-term use and infrequent but consistent purchasing patterns.
 
-##### Mean Visualization
+- **Cluster 1**: 
+  - **Marketing Strategies**: Engage with promotions on multi-buy offers, discounts for bulk purchases, and targeted campaigns highlighting savings on regular purchases.
+  - **Customer Service**: Offer personalized recommendations and incentives to increase engagement and spending.
 
-*(Insert bar chart or table here showing the mean values of key features for each cluster)*
+- **Cluster 2**: 
+  - **Marketing Strategies**: Focus on premium products, exclusive offers, and high-value item promotions. Highlight luxury and high-quality items to match their spending habits.
+  - **Customer Service**: Provide enhanced support and personalized services to maintain satisfaction and encourage continued high spending.
+  
+##### **Actions**
+- **Product Offers**: Design product bundles or services that cater to the distinct needs and behaviors of each cluster. For example:
+  - **Cluster 0**: Essentials and savings-related products.
+  - **Cluster 1**: Bulk purchase discounts and regular deals.
+  - **Cluster 2**: Premium products and exclusive offers.
+- **Customer Retention**: Implement loyalty programs and personalized engagement strategies to retain long-term users (Cluster 0) and high spenders (Cluster 2).
+
+Understanding these clusters in the context of the business helps tailor strategies for SHOPEASY to address the unique needs and preferences of each group, optimizing both customer satisfaction and business outcomes.
+
+
+Sure, here's the description of your DBSCAN code reformatted to fit the provided structure:
 
 ---
 
-### **DBSCAN**
+## Section 3: Experimental Design (**DBSCAN**)
 
-#### **Description**
-
-**What is DBSCAN?**
-
-DBSCAN (Density-Based Spatial Clustering of Applications with Noise) is a clustering algorithm that groups together points that are closely packed together while marking points that lie alone in low-density regions as outliers. Here’s how we will do it:
-
-1. **Core Points:** We will identify core points, which have at least a minimum number of neighbors (MinPts) within a specified radius (epsilon).
-2. **Directly Reachable:** We will consider points that are within the epsilon radius of a core point as directly reachable.
-3. **Density Reachable:** We will find points that are reachable from core points through a chain of other core points.
-4. **Cluster Formation:** We will form clusters from connected core points and their reachable points.
-5. **Noise Identification:** Points that are not reachable from any core point will be marked as noise or outliers.
-
-**Why is DBSCAN Good for This Problem?**
-
+### Purpose (Why is DBSCAN Good for This Problem?)
 - **Discovering Arbitrarily Shaped Clusters:** DBSCAN allows us to find clusters of arbitrary shapes, which is useful if our customer behavior patterns do not form clear, spherical clusters.
 - **Handling Noise:** DBSCAN effectively identifies and handles outliers in the data, which is beneficial for detecting anomalies in customer behavior.
 - **No Need for Predefined Number of Clusters:** Unlike K-means, DBSCAN does not require us to specify the number of clusters in advance, making it flexible for exploring the natural structure of our data.
 
-For our clustering analysis on customer purchasing behavior, DBSCAN will be particularly beneficial because:
-- It helps us identify natural clusters in the data without assuming a specific number of clusters.
-- It enables us to detect outliers or anomalies in customer behavior, which can be critical for understanding unusual spending patterns.
-- It allows us to discover clusters of varying shapes and sizes, providing a more nuanced understanding of customer segments.
+For our clustering analysis on customer purchasing behavior, DBSCAN is beneficial because it helps identify natural clusters without assuming a specific number of clusters, enables detection of outliers, and allows discovery of clusters of varying shapes and sizes.
 
-Overall, DBSCAN is a powerful tool for our clustering tasks, allowing us to uncover meaningful patterns and insights from customer purchasing behavior while also identifying and managing outliers effectively.
+### Baselines:
+We compared the DBSCAN clustering results with the K-means++ clustering algorithm. The comparison focused on the ability to handle arbitrary cluster shapes, manage noise, and the requirement for predefined cluster numbers.
 
-#### **Finding the Optimal EPS & Min Samples**
-
-##### Optimal `EPS`
+### Evaluation Metrics
+##### a) Optimal `EPS`
 
 To determine the best value for `eps`, we will use the k-nearest neighbors (k-NN) distance plot. This plot helps us visualize the distances between points and identify the "elbow" point where the distance starts to increase more rapidly, indicating a suitable value for `eps`.
 
-**Analyzing the k-NN Distance Plot**
+<img src="images/K_NNDistance.png" alt="Box Plots" width="450"/>
 
-From the k-NN distance plot, we can observe an "elbow" point, where the distances start to increase more rapidly. This elbow point suggests a good candidate for the `eps` value. Based on the plot, we will choose `eps` to be slightly above the elbow point.
+From the k-NN distance plot, we observe an "elbow" point where distances start to increase rapidly, suggesting a good candidate for `eps`. Based on the plot, we will choose `eps` to be slightly above the elbow point. In this case, the elbow appears to be around `eps = 1.17`, which we will use for the DBSCAN algorithm. (We chose exactly 1.17 after running the model a few times with different inputs)
 
-In this case, the elbow appears to be around `eps = 1.17`, which we will use as our `eps` value for the DBSCAN algorithm.
-
-*(Insert k-NN distance plot here to show the elbow point)*
-
-##### Finding the Optimal `min_samples`
+##### b) Finding the Optimal `min_samples`
 
 The `min_samples` parameter represents the minimum number of points required to form a dense region. A common heuristic is to set `min_samples` to be at least the dimensionality of the dataset plus one. We will experiment with different values around this heuristic to find the optimal `min_samples`.
 
 **Setting the Initial `min_samples`**
+Based on the dimensionality heuristic, we set `min_samples` to the number of features plus one. In this case, the dataset has a dimensionality of 10, so we set `min_samples` to 11.
 
-Based on the dimensionality heuristic, we set `min_samples` to the number of features plus one. In this case, the dataset has a dimensionality of 10, so we set `min_samples` to 11. We can adjust this value later based on the clustering results.
+---
 
-*(Insert explanation or table showing the process of choosing min_samples)*
+## Section 4: Results (**DBSCAN**)
 
-#### **Running the Model & Visualization**
+#### Running the Model & Visualization
 
-With the chosen `eps` and `min_samples` values, we will run the DBSCAN clustering algorithm on our scaled data. We will then analyze the resulting clusters and visualize them using PCA for a 2D plot.
-
-##### Scatterplot
-
-*(Insert scatter plot here showing the clusters in a 2D space using PCA)*
-
-##### Pie Graph
-
-*(Insert pie chart here showing the proportion of each cluster, including noise)*
+With the chosen `eps` and `min_samples` values, we will run the DBSCAN clustering algorithm on our scaled data. 
 
 ##### Mean Visualization
 
-*(Insert bar chart or table here showing the mean values of key features for each cluster)*
+<img src="images/dbscancombined_summary.png" alt="Box Plots" width="6000"/>
+
+**Cluster -1:**
+- **Purchasing Behavior:** Members of this cluster show inconsistent spending patterns. They have the highest single and multiple item buy frequencies in the scaled data. This group also shows the highest values for single and multiple item costs in the cleaned data.
+- **Emergency Funds:** They maintain the highest emergency funds across all clusters, suggesting a high level of financial security or risk aversion.
+- **Account Longevity:** Users in this cluster have a long account lifespan, indicating they have been with the platform for a significant time.
+- **Cost Per Purchase:** They spend significantly more on both single and multiple item purchases, indicating a preference for higher-value items or bulk purchases.
+
+**Cluster 0:**
+- **Purchasing Behavior:** This cluster represents conservative spenders who buy items infrequently, reflected in their low buy frequencies. This conservative spending is consistent in both scaled and cleaned data.
+- **Emergency Funds:** They maintain moderate emergency funds, indicating a balance between saving and spending.
+- **Account Longevity:** Users in this cluster have a long account lifespan, suggesting satisfaction with the service but potentially less engagement in recent purchases.
+- **Cost Per Purchase:** They spend moderate amounts on both single and multiple item purchases, indicating a preference for budget-friendly options or necessities.
+
+**Cluster 1:**
+- **Purchasing Behavior:** This cluster shows a balanced approach to spending. They have a moderate buy frequency for both single and multiple items, suggesting regular purchasing patterns.
+- **Emergency Funds:** Their emergency funds are moderate, indicating a balanced approach to saving and spending.
+- **Account Longevity:** Their account lifespan is long, indicating long-term users with varied and frequent purchasing patterns, showing higher engagement with the platform.
+- **Cost Per Purchase:** They spend moderate amounts on both single and multiple item purchases, reflecting regular but controlled spending behavior.
+  
+##### Scatterplot
+Here we analyze the resulting clusters and visualize them using PCA for a 2D plot.
+<img src="images/DBSCAN_scatterplot.png" alt="Box Plots" width="6000"/>
+
+  - **Cluster -1 (red):** Well-separated, indicating unique spending patterns and higher spending behavior.
+  - **Cluster 0 (blue):** Densely packed and well-separated from the other clusters, aligning with their conservative spending behavior.
+  - **Cluster 1 (green):** Spread out more along the second principal component, reflecting varied spending on multiple items.
+  - **Cluster 2 (purple):** Scatters widely along both components, indicating diverse and frequent purchasing behaviors with high spending on both single and multiple items.
+  
+##### Pie Graph
+<img src="images/pie_chartDBSCAN.png" alt="Box Plots" width="6000"/>
+
+  - **Cluster -1:** Represents 13.6% of the data, characterized by inconsistent spending patterns with high emergency funds and long account lifespan.
+  - **Cluster 0:** Represents 28.3% of the data, indicating conservative, infrequent purchasers with moderate emergency funds.
+  - **Cluster 1:** Represents 28.9% of the data, showing balanced spending and regular purchasing patterns.
+  - **Cluster 2:** Represents 29.1% of the data, representing heavy spenders with high engagement and significant spending on premium products.
+
+##### **Implications**
+- **Cluster -1:**
+  - **Marketing Strategies:** Target with premium products and exclusive offers that match their high spending behavior. Highlight luxury and high-value items.
+  - **Customer Service:** Provide enhanced support and personalized services to maintain satisfaction and encourage continued high spending.
+- **Cluster 0:**
+  - **Marketing Strategies:** Engage with promotions on essential items and financial products/services that emphasize savings. Consider loyalty programs that reward long-term use.
+  - **Customer Service:** Focus on value through loyalty programs and targeted promotions for budget-friendly options.
+- **Cluster 1:**
+  - **Marketing Strategies:** Engage with multi-buy offers, discounts for bulk purchases, and targeted campaigns highlighting savings on regular purchases.
+  - **Customer Service:** Offer personalized recommendations and incentives to increase engagement and spending.
+- **Cluster 2:**
+  - **Marketing Strategies:** Focus on premium products, exclusive offers, and high-value item promotions. Highlight luxury and high-quality items to match their spending habits.
+  - **Customer Service:** Provide enhanced support and personalized services to maintain satisfaction and encourage continued high spending.
+  
+##### **Actions**
+- **Product Offers:** Design product bundles or services that cater to the distinct needs and behaviors of each cluster. For example:
+  - **Cluster -1:** Premium products and exclusive offers.
+  - **Cluster 0:** Essentials and savings-related products.
+  - **Cluster 1:** Bulk purchase discounts and regular deals.
+  - **Cluster 2:** Premium products and exclusive offers.
+- **Customer Retention:** Implement loyalty programs and personalized engagement strategies to retain long-term users (Cluster 0) and high spenders (Cluster 2).
+
+Understanding these clusters in the context of the business helps tailor strategies for SHOPEASY to address the unique needs and preferences of each group, optimizing both customer satisfaction and business outcomes.
+
+## Section 5: Conclusions
+### **K-Means++ Graph Insights & Cluster Analysis**
+
+- **Cluster 0:** Conservative spenders with low buy frequencies, high emergency funds indicating a preference for saving, and long-term users with less recent engagement. They favor budget-friendly items, resulting in a low cost per purchase.
+
+- **Cluster 1:** Moderate spenders with regular buy patterns and lower emergency funds compared to Cluster 0. They are long-term users with more varied spending habits, and their cost per purchase is moderate, often due to a preference for bulk purchases.
+
+- **Cluster 2:** High spenders with the highest buy frequencies and lower-than-expected emergency funds given their spending. Their account longevity is similar to other clusters, but they prefer premium products, leading to a high cost per purchase.
+
+- **Cluster Distribution and PCA Scatter Plot:** Cluster 0 dominates, followed by Clusters 1 and 2. The PCA scatter plot shows that the clusters are well-separated, reflecting distinct spending behaviors.
+
+### **DBSCAN Graph Insights & Cluster Analysis**
+
+- **Cluster -1:** This group exhibits inconsistent spending patterns with high buy frequencies, the highest emergency funds among all clusters, and the longest account lifespan. They prefer high-value items, resulting in the highest cost per purchase.
+
+- **Cluster 0:** Conservative spenders with low buy frequencies and moderate emergency funds. They are long-term users who favor budget-friendly items, leading to a moderate cost per purchase.
+
+- **Cluster 1:** Balanced spenders with regular buy patterns and moderate emergency funds. These long-term users have a controlled spending habit, resulting in a moderate cost per purchase.
+
+- **Cluster 2:** High spenders with a preference for premium products. They have moderate emergency funds and are long-term users. Their high-consumption lifestyle results in a high cost per purchase.
+
+- **Cluster Distribution and PCA Scatter Plot:** Clusters are more evenly distributed, and the PCA scatter plot shows that clusters are well-separated with diverse spending behaviors.
 
 ---
+
+### **FINAL CONCLUSION**
+- **K-Means++:** This method produces well-separated and clearly defined clusters, highlighting the dominance of conservative spenders (Cluster 0). It is suitable for broad marketing strategies, identifying broad spending patterns, and targeting promotions based on distinct customer segments and spending levels.
+
+- **DBSCAN:** This method provides more granular clustering, effectively handling outliers with an additional noise cluster (-1). It captures varied and intricate spending behaviors, resulting in evenly distributed clusters. This makes it ideal for personalized marketing strategies, understanding specific customer habits, and targeting personalized offers.
+
+- **Overall:** Both methods offer valuable insights. K-Means++ excels in broad categorization and identifying distinct customer segments, making it suitable for broad marketing strategies. DBSCAN excels in handling detailed, granular data, particularly with outliers, making it ideal for personalized marketing strategies. The choice between the two depends on the specific needs of the analysis and the desired marketing approach.
