@@ -16,7 +16,7 @@ Describe your proposed ideas, such as features, algorithms, training overview, d
 - Consider including a figure illustrating your ideas, like a flowchart of your machine learning system. (Place it in the "images" folder and link it here using `![Flowchart Description](images/flowchart.png)`).
 
 
-### ** 1. Visualizing and Understanding Data Structure & Values**
+### **1. Visualizing and Understanding Data Structure & Values**
 
 #### a) Checking Data Integrity
 
@@ -42,22 +42,18 @@ We then summarized the new DataFrame to understand the distribution and range of
 
 *Observations:* `leastAmountPaid` has a maximum value greater than the `accountTotal` suggesting potential errors or outliers.
 
---- 
-
-### ** 2. Univariate Analysis**
+### **2. Univariate Analysis**
 
 #### a) Distribution Graph
 We began by examining the distribution of individual variables within the DataFrame to understand their spread and identify any potential skewness or outliers.
 
 <img src="images/histograms.png" alt="Distribution Graph" width="600"/>
 
-
 **Observations from the Data:**
 - **Right-Skewed Distributions**: `accountTotal`, `itemCosts`, `maxSpendLimit`
 - **Left-Skewed Distributions**: `frequencyIndex`, `accountLifespan`
 - **Bimodal Distribution**: `itemBuyFrequency`
 - **Uniform Distribution**: `webUsage`
-
 
 #### b) Box Plots
 
@@ -66,21 +62,14 @@ To identify and analyze outliers, we utilized box plots for various features.
 <img src="images/boxplots.png" alt="Box Plots" width="600"/>
 
 **Observations from Box Plots:**
-
 - **High Variation**:
   - Many box plots exhibited a significant number of outliers.
   - These outliers indicate substantial variation within certain features.
+  - 
 
-- **Next Steps**:
-  - Before delving deeper into outlier analysis, we will first select the most appropriate features for clustering.
+### **3. Bivariate Analysis**
 
----
-
-### **Bivariate Analysis**
-
-#### Objective
-
-We aimed to examine relationships between pairs of variables with similar values from the box plots to understand their interactions better.
+Next we aimed to examine relationships between pairs of variables with similar values from the box plots to understand their interactions better.
 
 #### Pairs Analyzed
 
@@ -90,21 +79,18 @@ We aimed to examine relationships between pairs of variables with similar values
 #### Outliers
 
 We identified significant outliers in the dataset:
-- **leastAmountPaid**: Outliers reach values around 80,000, which is significantly higher than the highest values in `monthlyPaid` or `accountTotal`.
+- **leastAmountPaid**: In the box plots outliers reach values around 80,000, which is significantly higher than the highest values in `monthlyPaid` or `accountTotal`.
 - **monthlyPaid**: The description "Total amount paid by the user every month" is vague. It is unclear whether this refers to a fixed amount or an average.
 
 #### Anomalies
-
 We observed anomalies in the data:
 - **leastAmountPaid vs. accountTotal**: `leastAmountPaid` has higher values than `accountTotal`, which is illogical. The least amount paid in a single transaction should not exceed the total amount spent since registration.
 
-#### Next Steps
-
+#### ScatterPlot & Correlation
 To further investigate any missed relationships or anomalies, we will conduct a multivariate analysis.
 
-#### ScatterPlot & Correlation
-
 ##### itemBuyFrequency vs. multipleItemBuyFrequency
+<img src="images/scatteritemBuyFrequencyvsmultipleItemBuyFrequency.png" alt="Box Plots" width="450"/>
 
 **Analysis of Relationship Between itemBuyFrequency and multipleItemBuyFrequency**
 
