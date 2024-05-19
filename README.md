@@ -71,105 +71,74 @@ To identify and analyze outliers, we utilized box plots for various features.
 
 Next we aimed to examine relationships between pairs of variables with similar values from the box plots to understand their interactions better.
 
-#### Pairs Analyzed
+#### a) Analysis of Pairs Analyzed
 
 - **itemCosts and singleItemCosts**
 - **itemBuyFrequency and multipleItemBuyFrequency**
 
-#### Outliers
-
-We identified significant outliers in the dataset:
+**Outliers:**
 - **leastAmountPaid**: In the box plots outliers reach values around 80,000, which is significantly higher than the highest values in `monthlyPaid` or `accountTotal`.
 - **monthlyPaid**: The description "Total amount paid by the user every month" is vague. It is unclear whether this refers to a fixed amount or an average.
 
-#### Anomalies
-We observed anomalies in the data:
+**Anomalies**
 - **leastAmountPaid vs. accountTotal**: `leastAmountPaid` has higher values than `accountTotal`, which is illogical. The least amount paid in a single transaction should not exceed the total amount spent since registration.
 
-#### ScatterPlot & Correlation
+#### b) ScatterPlot & Correlation
 To further investigate any missed relationships or anomalies, we will conduct a multivariate analysis.
 
-##### itemBuyFrequency vs. multipleItemBuyFrequency
+##### - itemBuyFrequency vs. multipleItemBuyFrequency
+
 <img src="images/scatteritemBuyFrequencyvsmultipleItemBuyFrequency.png" alt="Box Plots" width="450"/>
 
-**Analysis of Relationship Between itemBuyFrequency and multipleItemBuyFrequency**
+We observed a strong positive relationship between **itemBuyFrequency** (frequency of items purchased) and **multipleItemBuyFrequency** (frequency of items bought in installments). 
 
-We observed a strong positive relationship between these two variables. This is expected as their definitions are closely related:
-- **itemBuyFrequency**: Frequency of items purchased by the user.
-- **multipleItemBuyFrequency**: Frequency of items bought in multiple installments by the user.
-
-To quantify this relationship, we calculated their correlation.
-
-- **Correlation Result**: The correlation is very strong (0.86).
-  - **Interpretation**: This high correlation suggests that users frequently opt for multiple installments, resulting in a close alignment between the overall buying frequency and the frequency of installment purchases.
-  - **Alternative Explanation**: Purchases made in installments tend to be frequent, thereby contributing to the strong correlation.
+- The correlation is very strong at 0.86.
+  - This suggests that users frequently opt for multiple installments, aligning closely with the overall buying frequency.
+  - Frequent installment purchases contribute to the strong correlation.
 
 **Key Points:**
-- The scatter plot visually confirms the strong positive relationship.
-- The correlation coefficient quantifies this relationship, indicating a value of 0.86.
-- Users often choose multiple installments, or frequent installment purchases align closely with the overall buying frequency, leading to this high correlation.
+- The scatter plot confirms the strong positive relationship.
+- The correlation coefficient of 0.86 quantifies this relationship.
 
-*(Insert scatter plot here showing the relationship between itemBuyFrequency and multipleItemBuyFrequency)*
 
-##### itemCosts vs. singleItemCosts
+##### - itemCosts vs. singleItemCosts
+<img src="images/scatteritemCostsvssingleItemCosts.png" alt="Box Plots" width="450"/>
 
-**Analysis of Relationship Between itemCosts and singleItemCosts**
+We observed a strong positive relationship between **itemCosts** (total costs of items purchased) and **singleItemCosts** (costs of items bought in a single purchase).
 
-We observed a strong positive relationship between these two variables. This is expected as their definitions are closely related:
-- **itemCosts**: Total costs of items purchased by the user.
-- **singleItemCosts**: Costs of items that the user bought in a single purchase without opting for installments.
-
-To quantify this relationship, we calculated their correlation.
-
-- **Correlation Result**: The correlation is very strong (close to 1).
-  - **Interpretation**: This high correlation suggests that most users prefer single purchases without multiple installments, leading to a high overlap between total costs and single-item costs.
-  - **Alternative Explanation**: Single purchases tend to have higher values compared to multiple installment purchases, contributing to the strong correlation.
+- The correlation is very strong, close to 1.
+  - This suggests that most users prefer single purchases without installments, leading to a high overlap between total and single-item costs.
+  - Single purchases tend to have higher values compared to installment purchases, contributing to the strong correlation.
 
 **Key Points:**
-- The scatter plot visually confirms the strong positive relationship.
-- The correlation coefficient quantifies this relationship, indicating a value close to 1.
-- Users typically opt for single purchases without installments or the value of single purchases is higher, leading to this high correlation.
+- The scatter plot confirms the strong positive relationship.
+- The correlation coefficient, close to 1, quantifies this relationship.
 
-*(Insert scatter plot here showing the relationship between itemCosts and singleItemCosts)*
 
-##### itemCosts vs. multipleItemCosts
+##### - accountTotal vs leastAmountPaid
 
-We also checked the correlation between `itemCosts` and `multipleItemCosts`, finding it to be moderately strong at 0.68. This indicates a significant relationship between total costs and costs of items bought in multiple installments.
+<img src="images/scatteraccountTotalvsleastAmountPaid.png" alt="Box Plots" width="450"/>
 
-*(Insert scatter plot here showing the relationship between itemCosts and multipleItemCosts)*
+We observed a moderate positive relationship between **accountTotal** (total amount in the account) and **leastAmountPaid** (least amount paid).
 
-#### Anomaly between the two relationships
-
-**Analysis of Relationship Between accountTotal and leastAmountPaid**
-
-We observed a moderate positive relationship between these two variables:
-- **accountTotal**: Total amount in the account.
-- **leastAmountPaid**: Least amount paid on the account.
-
-To quantify this relationship, we calculated their correlation.
-
-- **Correlation Result**: The correlation is moderate (0.40).
-  - **Interpretation**: This correlation suggests that while there is a relationship between the total amount in the account and the least amount paid, it is not very strong. Users with higher account totals do not always pay higher amounts, but there is still a noticeable tendency.
-  - **Alternative Explanation**: Higher account totals might be associated with higher payments to some extent, thereby contributing to the moderate correlation.
+- **Correlation Result**: The correlation is moderate at 0.40.
+  - **Interpretation**: This suggests that while there is a relationship, it is not very strong. Users with higher account totals do not always pay higher amounts, but there is a noticeable tendency.
+  - **Alternative Explanation**: Higher account totals might be somewhat associated with higher payments, contributing to the moderate correlation.
 
 **Key Points:**
-- The scatter plot visually shows the moderate positive relationship.
-- The correlation coefficient quantifies this relationship, indicating a value of 0.40.
-- There is a moderate alignment between the total amount in the account and the least amount paid, leading to this moderate correlation.
+- The scatter plot shows the moderate positive relationship.
+- The correlation coefficient of 0.40 quantifies this relationship.
 
-*(Insert scatter plot here showing the relationship between accountTotal and leastAmountPaid)*
-
-#### Integrity Issue in Account Data
-
+**ANOMALY IN COMPARISON:**
 We observed that numerous users have values for `leastAmountPaid` that are higher than the values for `accountTotal`, which should not be possible. This discrepancy suggests an inconsistency in the data that needs to be addressed to ensure accurate analysis.
 
-#### Using Categorical Values
+#### c) Using Categorical Values
 
-We analyzed the `location` and `accountType` to determine if there is a predominant category. Both categories appeared to have an equal distribution.
-
-*(Insert visualizations here showing the distribution of location and accountType)*
+We now analyzed the `location` and `accountType` to determine if there is a predominant category. Both categories appeared to have an equal distribution.
 
 #### KDE (Kernel Density Estimate)
+
+<img src="images/KDE.png" alt="Box Plots" width="6000"/>
 
 **Analysis of Relationship Between itemBuyFrequency and multipleItemBuyFrequency**
 
