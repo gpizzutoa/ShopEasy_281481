@@ -9,17 +9,16 @@
 ## Section 1: Introduction
 Briefly describe your project here.
 
-## Section 2: Methods
+## Section 2: Methods (**EDA & Data Pre-Processing**)
 Describe your proposed ideas, such as features, algorithms, training overview, design choices, etc., and your environment here. Ensure that:
 - A reader can understand why you made your design decisions.
 - A reader should be able to recreate your environment (include commands like `conda list`, `conda env export`, etc.).
 - Consider including a figure illustrating your ideas, like a flowchart of your machine learning system. (Place it in the "images" folder and link it here using `![Flowchart Description](images/flowchart.png)`).
 
-### **EDA & Data Pre-Processing**
 
-#### **Visualizing and Understanding Data Structure & Values**
+### **Visualizing and Understanding Data Structure & Values**
 
-##### Checking Data Integrity
+#### 1. Checking Data Integrity
 
 First, we examined the dataset for missing values to ensure its completeness, checking for missing values and duplicates.
 
@@ -29,52 +28,34 @@ First, we examined the dataset for missing values to ensure its completeness, ch
   - `leastAmountPaid`: 313 missing values (3.50% of the total). This higher percentage might still not significantly impact our analysis of payment behavior.
   - **Overall Data Completeness**: Most columns have a very low percentage of missing values or none at all, because of the low percentage we will drop those columns. We also observed there where no duplicates.
 
-##### Dropping Unnecessary Values & Columns
+#### 2. Dropping Unnecessary Values & Columns
 
-1. We removed the `personId` column since it's a primary key and not relevant for our analysis.
-2. We dropped rows that had any missing values across the DataFrame (after removing `personId`).
+  - We removed the `personId` column since it's a primary key and not relevant for our analysis.
+  -  We dropped rows that had any missing values across the DataFrame (after removing `personId`).
 
-This resulted in a new, clean DataFrame which we referred to as `ndf`.
+- This resulted in a new, clean DataFrame which we referred to as `ndf`.
+- After cleaning, we re-checked for missing values to confirm that no missing data remained. All was good!
 
-#### Re-Checking Missing Values for `ndf`
-
-After cleaning, we re-checked for missing values to confirm that no missing data remained. All was good!
-
-#### Describing the New DataFrame
+#### 3. Describing the New DataFrame
 
 We then summarized the new DataFrame to understand the distribution and range of values in each column.
 
-**Observations:**
-- The summary provided quick insights into the data, such as:
-  - `leastAmountPaid` having a maximum value greater than the `accountTotal` suggests potential errors or outliers. This requires further investigation to ensure the accuracy of our analysis.
-
-*(Insert a summary statistics table here to visualize the distribution of values in each column)*
+*Observations:* `leastAmountPaid` has a maximum value greater than the `accountTotal` suggesting potential errors or outliers.
 
 ### **Univariate Analysis**
 
-#### Distribution Graph
+#### 4. Distribution Graph
 
 We began by examining the distribution of individual variables within the DataFrame to understand their spread and identify any potential skewness or outliers.
 
-**Skewed Distributions:**
-- **Right skew**: Indicates a high concentration of values at the lower end, suggesting possible outliers on the higher end.
-- **Left skew**: Indicates a high concentration of values at the higher end, suggesting possible outliers on the lower end.
+*![Distribution Graph](images/histograms.png)
 
 **Observations from the Data:**
+- **Right-Skewed Distributions**: `accountTotal`, `itemCosts`, `maxSpendLimit`
+- **Left-Skewed Distributions**: `frequencyIndex`, `accountLifespan`
+- **Bimodal Distribution**: `itemBuyFrequency`
+- **Uniform Distribution**: `webUsage`
 
-- **Right-Skewed Distributions**:
-  - `accountTotal`, `itemCosts`, `maxSpendLimit`
-
-- **Left-Skewed Distributions**:
-  - `frequencyIndex`, `accountLifespan`
-
-- **Bimodal Distribution**:
-  - `itemBuyFrequency`
-
-- **Uniform Distribution**:
-  - `webUsage`
-
-*(Insert distribution graphs for each mentioned variable to visualize the skewness and distribution types)*
 
 #### Box Plots
 
