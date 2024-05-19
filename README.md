@@ -225,7 +225,7 @@ After cleaning and scaling the data, we generated a new correlation heatmap to e
 
 ---
 
-**Why This is a Clustering Problem**
+### **Why is this is a Clustering Problem**
 
 - **Data Characteristics**:
   - The dataset includes both numerical and categorical data, ideal for segmentation and clustering.
@@ -241,6 +241,7 @@ After cleaning and scaling the data, we generated a new correlation heatmap to e
 
 The objective is to identify natural groupings within the data to enhance the user experience through personalized recommendations.
 
+---
 ## Section 3: Experimental Design ( **K-Means++**)
 ### Purpose (Why is K-means++ Good for This Problem?)
 - **Better Initialization:** Ensures initial centroids are spread out, reducing poor initialization that could lead to suboptimal results.
@@ -344,9 +345,6 @@ Here we analyze the resulting clusters and visualize them using PCA for a 2D plo
 - **Customer Retention**: Implement loyalty programs and personalized engagement strategies to retain long-term users (Cluster 0) and high spenders (Cluster 2).
 
 Understanding these clusters in the context of the business helps tailor strategies for SHOPEASY to address the unique needs and preferences of each group, optimizing both customer satisfaction and business outcomes.
-
-
-Sure, here's the description of your DBSCAN code reformatted to fit the provided structure:
 
 ---
 
