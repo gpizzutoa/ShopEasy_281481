@@ -196,8 +196,8 @@ Using this heatmap, we'll visualize the correlation between all attributes to ob
   - **webUsage** and **frequencyIndex**: Little correlation; similar to `itemBuyFrequency`.
   - **paymentCompletionRate**: Lack of correlation; no significant insights.
   - **maxSpendLimit**: Inconsistent with `singleItemCosts`; conflicting definition.
-  - **singleItemBuyFrequency** and **multipleItemBuyFrequency**: Specific versions of `itemBuyFrequency`.
-  - **singleItemCosts** and **multipleItemCosts**: Specific versions of `itemCosts`.
+  - **itemBuyFrequency**: Specific versions `singleItemBuyFrequency`, `multipleItemBuyFrequency`.
+  - **itemCosts**: Specific versions `singleItemCosts` and `multipleItemCosts`.
   - **emergencyUseFrequency**: High correlation with `emergencyCount`; redundant.
 
 - **Account Type**:
