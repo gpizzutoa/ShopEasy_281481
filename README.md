@@ -319,9 +319,9 @@ Here we analyze the resulting clusters and visualize them using PCA for a 2D plo
 ##### Pie Graph
 <img src="images/K_Meanspie_chart.png" alt="Box Plots" width="6000"/>
   
-  - **Cluster 0**: Makes up 65.9% of the total data points, indicating a large majority of conservative, infrequent purchasers with high emergency funds.
-  - **Cluster 1**: Represents 17.8% of the data, characterized by moderate spending and frequent purchases, especially multiple items.
-  - **Cluster 2**: Accounts for 16.3% of the data, representing heavy spenders who purchase expensive items frequently.
+  - **Cluster 0**: Accounts for 16.3% of the data, representing heavy spenders who purchase expensive items frequently.
+  - **Cluster 1**: Makes up 65.9% of the data, indicating a large majority of conservative, infrequent purchasers with high emergency funds.
+  - **Cluster 2**: Represents 17.8% of the data, characterized by moderate spending and frequent purchases, especially multiple items.
 
 ##### **Implications**
 - **Cluster 0**: 
