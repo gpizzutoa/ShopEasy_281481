@@ -176,7 +176,7 @@ Using this heatmap, we'll visualize the correlation between all attributes to ob
 
 ### **6. Dropping Values**
 
-We created a new variable, Final Data Frame (`fdf`), in which we dropped all the columns listed above.
+We created a Data Frame, Final Data Frame (`fdf`), in which we dropped all the columns listed above.
 
 ### **7. Removing Outliers**
 
@@ -197,19 +197,11 @@ After cleaning and scaling the data, we generated a new correlation heatmap to e
 
 ### **Why is this is a Clustering Problem**
 
-- **Data Characteristics**:
-  - The dataset includes both numerical and categorical data, ideal for segmentation and clustering.
-
-- **Not Regression**:
-  - Regression predicts continuous outcomes, which is not the focus here.
-
-- **Not Classification**:
-  - Classification involves supervised learning with predefined categorical outcomes. Our goal is to uncover clusters, not use predefined ones.
-
 - **Clustering Approach**:
   - Clustering is used in unsupervised learning to discover patterns and group customers into clusters without predefined outcomes.
+  - The dataset includes both numerical and categorical data, ideal for segmentation and clustering.
 
-The objective is to identify natural groupings within the data to enhance the user experience through personalized recommendations.
+The objective is to identify groupings within the data to enhance the user experience through personalized recommendations.
 
 ---
 ## Section 3: Experimental Design ( **K-Means++**)
@@ -247,11 +239,6 @@ This method suggests a cluster number of 3 or 4 based on the graph.
 
 Using 3 clusters is significantly better than 4. We do not expect a large score because it is less relevant in a clustering problem such as this one.
 
-**Rationale**:
-- **Customer Segmentation**: Identifies general customer types, making the elbow method practical.
-- **Complex Data**: Using the Silhouette score alone might suggest more clusters than necessary, leading to overfitting and making clusters less interpretable.
-- **Insightful Analysis**: Both methods combined provide a balanced approach, ensuring meaningful and manageable clusters without focusing on subtle, non-essential differences in complex, high-dimensional data. Because of this, we will use `3` clusters.
-
 ## Section 4: Results (**K-Means++**)
 
 #### Running the Model & Visualization
@@ -278,22 +265,14 @@ Once we have determined the optimal number of clusters, we run the K-means++ mod
 - **Lower Emergency Funds:** Despite their high spending, their emergency funds are not as high as might be expected, suggesting that they prioritize spending on products over saving, or they have a different approach to financial management.
 - **High Item Count:** This group buys a large number of items, possibly indicating bulk purchasing, reselling, or simply a high-consumption lifestyle.
 - **Account Type Consistency:** Their account types are similar to other clusters, indicating that the spending behavior is not influenced by account type but rather by personal preferences and financial capacity.
-- 
-##### Scatter Plot
-Here we analyze the resulting clusters and visualize them using PCA for a 2D plot.
-<img src="images/K_MeansViz.png" alt="Box Plots" width="6000"/>
 
-  - **Cluster 0**: Densely packed and well-separated from the other clusters, aligning with their conservative spending behavior.
-  - **Cluster 1**: Spreads out more along the second principal component, reflecting varied spending on multiple items.
-  - **Cluster 2**: Scatters widely along both components, indicating diverse and frequent purchasing behaviors, with high spending on both single and multiple items.
 
 ##### Pie Graph
 <img src="images/K_Meanspie_chart.png" alt="Box Plots" width="6000"/>
   
-  - **Cluster 0**: Accounts for 16.3% of the data, representing heavy spenders who purchase expensive items frequently.
-  - **Cluster 1**: Makes up 65.9% of the data, indicating a large majority of conservative, infrequent purchasers with high emergency funds.
-  - **Cluster 2**: Represents 17.8% of the data, characterized by moderate spending and frequent purchases, especially multiple items.
-
+  - **Cluster 0**: Accounts for 16.3% of the data, indicating a large majority of conservative, infrequent purchasers with high emergency funds.
+  - **Cluster 1**: Makes up 65.9% of the data, characterized by moderate spending and more frequent purchases, especially multiple items.
+  - **Cluster 2**: Represents 17.8% of the data, representing heavy spenders who purchase expensive items frequently.
 ##### **Implications**
 - **Cluster 0**: 
   - **Marketing Strategies**: Target with promotions on essential items and financial products/services that emphasize savings.
