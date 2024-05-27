@@ -120,9 +120,6 @@ We observed a strong positive relationship between **itemCosts** (total costs of
 - The correlation is very strong at 0.92.
 - This suggests that single purchases tend to have higher values compared to multiple installment purchases, contributing to the strong correlation.
 
-**ANOMALY IN COMPARISON:**
-We observed that numerous users have values for `leastAmountPaid` that are higher than the values for `accountTotal`, which should not be possible. This discrepancy suggests an inconsistency in the data that needs to be addressed to ensure accurate analysis.
-
 #### c) Using Categorical Values
 
 We now analyzed the `location` and `accountType` to determine if there is a predominant category. Both categories appeared to have an equal distribution.
