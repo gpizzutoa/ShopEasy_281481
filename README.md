@@ -179,8 +179,8 @@ We created a Data Frame, Final Data Frame (`fdf`), in which we dropped all the c
 
 ### **7. Removing Outliers**
 
-To address outliers, we removed values that are more than 4 standard deviations from the mean. Below, we identify and remove these outliers, ensuring we don't lose too much data.
-- **Outliers Removed**: The number of rows removed is 536, which is relatively small and can be considered negligible. Therefore, we proceed with the removal process.
+To address outliers, we removed values that are more than 4 standard deviations from the mean. We identified and removed these outliers, ensuring we didn't lose too much data.
+- **Outliers Removed**: The number of rows removed is 536, which is relatively small. Therefore, we proceed with the removal process.
 
 ### **8. Data Scaling**
 
