@@ -337,16 +337,16 @@ With the chosen `eps` and `min_samples` values, we will run the DBSCAN clusterin
 <img src="images/dbscancombined_summary.png" alt="Box Plots" width="6000"/>
 
 **Cluster -1: High-Value, Diverse Users**
-- Cluster -1 includes users with diverse spending habits, making significant purchases both outright and on installments. They have substantial emergency funds, showing financial preparedness and strong trust in ShopEasy. Their consistent, significant spending and long account tenure highlight their loyalty. ShopEasy should enhance premium services and offer exclusive deals to retain these users. Personalized marketing with high-value product recommendations and tips on using emergency funds, along with exclusive rewards in loyalty programs, will further strengthen their commitment to the platform.
+- Cluster -1 includes users with diverse spending habits, making significant purchases both outright and on installments. They have substantial emergency funds, showing financial preparedness and strong trust in ShopEasy. Their consistent, significant spending and long account tenure highlight their loyalty.
 
 **Cluster 0: Balanced, Premium Users**
-- Cluster 0 consists mainly of premium users with balanced spending on single items and installments. They have moderate emergency funds, indicating a cautious yet stable financial approach. Their consistent purchasing and long account tenure show strong engagement and appreciation for premium membership. ShopEasy should focus on upselling premium add-ons and cross-selling complementary products to these users. Personalized recommendations that emphasize the benefits of premium membership, along with exclusive content and early access to sales and events, can further enhance their engagement and loyalty.
+- Cluster 0 consists mainly of premium users with balanced spending on single items and installments. They have moderate emergency funds, indicating a cautious yet stable financial approach. Their consistent purchasing and long account tenure show strong engagement and appreciation for premium membership.
 
 **Cluster 1: Installment-Focused, Regular Users**
-- Cluster 1 users prefer installment-based purchases and spend less on single items. They have lower emergency funds, indicating a need for financial flexibility and a budget-conscious approach. Their engagement is consistent but less frequent than other clusters. ShopEasy should highlight the benefits of flexible payment plans and installment options. Providing financial management tips and promoting installment advantages can help these users. Targeted promotions with incentives for installment purchases can encourage more frequent and higher-value transactions.
+- Cluster 1 users prefer installment-based purchases and spend less on single items. They have lower emergency funds, indicating a need for financial flexibility and a budget-conscious approach. Their engagement is consistent but less frequent than other clusters.
 
 **Cluster 2: Moderate-Spending, Student Users**
-- Cluster 2 consists mainly of student users with moderate spending and a balance between single and installment purchases. They have moderate emergency funds, showing cautious yet opportunistic spending. Their long account lifespan indicates ongoing use with potential for increased engagement post-graduation. ShopEasy should offer student discounts and budget-friendly options, along with financial planning tools tailored to students. Creating a sense of community through student-focused events and content can enhance their experience and foster loyalty as they transition beyond student life.
+- Cluster 2 consists mainly of student users with moderate spending and a balance between single and installment purchases. They have moderate emergency funds, showing cautious yet opportunistic spending. Their long account lifespan indicates ongoing use with potential for increased engagement post-graduation.
 
 ##### Pie Graph
 <img src="images/pie_chartDBSCAN.png" alt="Box Plots" width="6000"/>
