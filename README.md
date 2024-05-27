@@ -82,7 +82,6 @@ To identify and analyze outliers, we utilized box plots for various features.
 - **High Variation**:
   - Many box plots exhibited a significant number of outliers.
   - These outliers indicate substantial variation within certain features.
-  - 
 
 ### **3. Bivariate Analysis**
 
