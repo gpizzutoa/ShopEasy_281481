@@ -265,6 +265,8 @@ Once we have determined the optimal number of clusters, we run the K-means++ mod
 - **High Item Count:** This group buys a large number of items, possibly indicating bulk purchasing, reselling, or simply a high-consumption lifestyle.
 - **Account Type Consistency:** Their account types are similar to other clusters, indicating that the spending behavior is not influenced by account type but rather by personal preferences and financial capacity.
 
+##### ScatterPlot
+<img src="images/K-MeansViz.png" alt="ScatterPlot" width="6000"/>
 
 ##### Pie Graph
 <img src="images/K_Meanspie_chart.png" alt="Box Plots" width="6000"/>
