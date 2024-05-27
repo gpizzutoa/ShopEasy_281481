@@ -57,7 +57,7 @@ First, we examined the dataset for missing values to ensure its completeness, ch
 
 We then summarized the new DataFrame to understand the distribution and range of values in each column.
 
-*Observations:* `leastAmountPaid` has a maximum value greater than the `accountTotal` suggesting potential errors or outliers.
+*Observations:* `leastAmountPaid` having a maximum value greater than the `itemCosts` suggest potential errors or outliers in the data, which requires further investigation to ensure accuracy in the data analysis.
 
 ### **2. Univariate Analysis**
 
@@ -93,12 +93,10 @@ Next we aimed to examine relationships between pairs of variables with similar v
 - **itemCosts and singleItemCosts**
 - **itemBuyFrequency and multipleItemBuyFrequency**
 
-**Outliers:**
-- **leastAmountPaid**: In the box plots outliers reach values around 80,000, which is significantly higher than the highest values in `monthlyPaid` or `accountTotal`.
-- **monthlyPaid**: The description "Total amount paid by the user every month" is vague. It is unclear whether this refers to a fixed amount or an average.
-
 **Anomalies**
-- **leastAmountPaid vs. accountTotal**: `leastAmountPaid` has higher values than `accountTotal`, which is illogical. The least amount paid in a single transaction should not exceed the total amount spent since registration.
+- **leastAmountPaid**: In the box plots outliers reach values around 80,000, which is significantly higher than the highest values in `monthlyPaid` or `accountTotal`.
+
+- **monthlyPaid**: The description "Total amount paid by the user every month" is vague. It is unclear whether this refers to a fixed amount or an average.
 
 #### b) ScatterPlot & Correlation
 To further investigate any missed relationships or anomalies, we will conduct a multivariate analysis.
@@ -113,38 +111,14 @@ We observed a strong positive relationship between **itemBuyFrequency** (frequen
   - This suggests that users frequently opt for multiple installments, aligning closely with the overall buying frequency.
   - Frequent installment purchases contribute to the strong correlation.
 
-**Key Points:**
-- The scatter plot confirms the strong positive relationship.
-- The correlation coefficient of 0.86 quantifies this relationship.
-
 
 ##### - itemCosts vs. singleItemCosts
 <img src="images/scatteritemCostsvssingleItemCosts.png" alt="Box Plots" width="450"/>
 
 We observed a strong positive relationship between **itemCosts** (total costs of items purchased) and **singleItemCosts** (costs of items bought in a single purchase).
 
-- The correlation is very strong, close to 1.
-  - This suggests that most users prefer single purchases without installments, leading to a high overlap between total and single-item costs.
-  - Single purchases tend to have higher values compared to installment purchases, contributing to the strong correlation.
-
-**Key Points:**
-- The scatter plot confirms the strong positive relationship.
-- The correlation coefficient, close to 1, quantifies this relationship.
-
-
-##### - accountTotal vs leastAmountPaid
-
-<img src="images/scatteraccountTotalvsleastAmountPaid.png" alt="Box Plots" width="450"/>
-
-We observed a moderate positive relationship between **accountTotal** (total amount in the account) and **leastAmountPaid** (least amount paid).
-
-- **Correlation Result**: The correlation is moderate at 0.40.
-  - **Interpretation**: This suggests that while there is a relationship, it is not very strong. Users with higher account totals do not always pay higher amounts, but there is a noticeable tendency.
-  - **Alternative Explanation**: Higher account totals might be somewhat associated with higher payments, contributing to the moderate correlation.
-
-**Key Points:**
-- The scatter plot shows the moderate positive relationship.
-- The correlation coefficient of 0.40 quantifies this relationship.
+- The correlation is very strong at 0.92.
+- This suggests that single purchases tend to have higher values compared to multiple installment purchases, contributing to the strong correlation.
 
 **ANOMALY IN COMPARISON:**
 We observed that numerous users have values for `leastAmountPaid` that are higher than the values for `accountTotal`, which should not be possible. This discrepancy suggests an inconsistency in the data that needs to be addressed to ensure accurate analysis.
